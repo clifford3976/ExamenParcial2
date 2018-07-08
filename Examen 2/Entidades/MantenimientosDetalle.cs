@@ -17,7 +17,7 @@ namespace Examen_2.Entidades
         public int ArticulosId { get; set; }
         public string Articulo { get; set; }
         public int Cantidad { get; set; }
-        public int Precio { get; set; }
+        public decimal Precio { get; set; }
         public int Importe { get; set; }
 
         [ForeignKey("ArticulosId")]

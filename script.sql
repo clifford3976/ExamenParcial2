@@ -1,6 +1,8 @@
+
 CREATE DATABASE ParcialesDb
 GO
 USE ParcialesDb
+drop table Vehiculos
 GO
 CREATE TABLE Vehiculos
 (
@@ -8,6 +10,8 @@ CREATE TABLE Vehiculos
 	Descripcion varchar(max),
 	TotalMantenimiento money
 );
+Go
+drop table Talleres
 GO
 CREATE TABLE Talleres
 (
@@ -17,9 +21,21 @@ CREATE TABLE Talleres
 
 );
 GO
-
+drop table Articulos
 GO
-CREATE TABLE Mantenimiento
+CREATE TABLE Articulos
+(
+ ArticuloId int primary key identity(1,1),
+ Descripcion varchar(max),
+ costo money,
+ Ganancia money,
+ precio money,
+ Inventario money
+);
+GO
+drop table Mantenimiento
+GO
+CREATE TABLE Mantenimientos
 (
 			MantenimientoId int primary key identity(1,1),
 			VehiculoId int,
@@ -29,9 +45,9 @@ CREATE TABLE Mantenimiento
 			Total money
 );
 GO
-
+drop table MantenimientosDetalles
 GO
-CREATE TABLE MantenimientoDetalle
+CREATE TABLE MantenimientosDetalles
 (
 			Id int primary key identity(1,1),
 			MantenimientoId int,
@@ -39,12 +55,12 @@ CREATE TABLE MantenimientoDetalle
             ArticulosId int,
             Articulo varchar(30),
             Cantidad int,
-            Precio int,
+            Precio money,
             Importe int
       
 );
 GO
-
+drop table EntradaArticulos
 GO
 CREATE TABLE EntradaArticulos
 (
@@ -56,6 +72,14 @@ CREATE TABLE EntradaArticulos
       
 );
 GO
+
+select *from Articulos
+select * from EntradaArticulos
+select * from Talleres
+select * from Vehiculos
+select* from MantenimientosDetalles
+select* from Mantenimientos
+
 
 
 

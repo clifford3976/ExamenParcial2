@@ -10,20 +10,20 @@ namespace Examen_2.Entidades
     {
         [Key]
 
-        public int ArticulosId { get; set; }
+        public int ArticuloId { get; set; }
         public string Descripcion { get; set; }
-        public int costo { get; set; }
-        public int Ganancia { get; set; }
-        public int precio { get; set; }
-        public int Inventario { get; set; }
+        public decimal costo { get; set; }
+        public decimal Ganancia { get; set; }
+        public decimal precio { get; set; }
+        public decimal Inventario { get; set; }
 
         public Articulos()
         {
-            ArticulosId = 0;
+            ArticuloId = 0;
             Descripcion = string.Empty;
             this.costo = 0;
             Ganancia = 0;
-            this.precio = 0;
+            precio = 0;
             Inventario = 0;
         }
 

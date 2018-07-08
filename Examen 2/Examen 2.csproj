@@ -64,11 +64,11 @@
     <Compile Include="Entidades\MantenimientosDetalle.cs" />
     <Compile Include="Entidades\Talleres.cs" />
     <Compile Include="Entidades\Vehiculos.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,6 +96,39 @@
     <Compile Include="UI\Consultas\cVehiculos.Designer.cs">
       <DependentUpon>cVehiculos.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Registros\rArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Registros\rArticulos.Designer.cs">
+      <DependentUpon>rArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registros\rEntradaArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Registros\rEntradaArticulos.Designer.cs">
+      <DependentUpon>rEntradaArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registros\rMantenimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Registros\rMantenimientos.Designer.cs">
+      <DependentUpon>rMantenimientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registros\rTalleres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Registros\rTalleres.Designer.cs">
+      <DependentUpon>rTalleres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registros\rVehiculos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Registros\rVehiculos.Designer.cs">
+      <DependentUpon>rVehiculos.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -118,6 +151,21 @@
     <EmbeddedResource Include="UI\Consultas\cVehiculos.resx">
       <DependentUpon>cVehiculos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Registros\rArticulos.resx">
+      <DependentUpon>rArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Registros\rEntradaArticulos.resx">
+      <DependentUpon>rEntradaArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Registros\rMantenimientos.resx">
+      <DependentUpon>rMantenimientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Registros\rTalleres.resx">
+      <DependentUpon>rTalleres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Registros\rVehiculos.resx">
+      <DependentUpon>rVehiculos.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -130,11 +178,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UI\Registros\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="DAL\Scripts\script.sql" />
+    <None Include="Resources\icons8_Add_File_16.png" />
+    <None Include="Resources\icons8_Delete_32.png" />
+    <None Include="Resources\icons8_Save_as_32.png" />
+    <None Include="Resources\icons8_Add_File_32.png" />
     <None Include="Resources\icons8_Print_321.png" />
     <None Include="Resources\icons8_Search_Property_16.png" />
   </ItemGroup>

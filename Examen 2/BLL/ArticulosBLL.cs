@@ -129,11 +129,24 @@ namespace Examen_2.BLL
                 contexto.Dispose();
 
             }
-            catch (Exception) { throw; }
+            catch (Exception)
+            {
+                throw;
+            }
             return articulo;
         }
 
 
+
+        public static decimal CalcularCosto(decimal Ganancia, decimal precio)
+        {
+
+            Ganancia /= 100;
+
+            return Convert.ToDecimal(precio) * Convert.ToDecimal(Ganancia);
+
+
+        }
 
         public static decimal CalcularGanancia(decimal Costo, decimal Precio)
         {
@@ -144,6 +157,17 @@ namespace Examen_2.BLL
 
 
         }
+
+        public static decimal CalcularPrecio(decimal Costo, decimal Ganancia)
+        {
+
+            Ganancia /= 100;
+            Ganancia *= Costo;
+            return Convert.ToDecimal(Costo) + Convert.ToDecimal(Ganancia);
+
+
+        }
+
 
 
         public static string RetornarDescripcion(string nombre)

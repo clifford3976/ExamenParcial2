@@ -26,7 +26,7 @@ namespace Examen_2.BLL
 
                     foreach (var item in articulo.GetList(x => x.Descripcion == entradaArticulo.Articulos))
                     {
-                        contexto.articulo.Find(item.ArticulosId).Inventario += entradaArticulo.Cantidad;
+                        contexto.articulo.Find(item.ArticuloId).Inventario += entradaArticulo.Cantidad;
                     }
 
                     contexto.SaveChanges();

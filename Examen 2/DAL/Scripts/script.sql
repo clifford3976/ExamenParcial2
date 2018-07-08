@@ -17,6 +17,16 @@ CREATE TABLE Talleres
 
 );
 GO
+CREATE TABLE Articulos
+(
+ ArticuloId int primary key identity(1,1),
+ Descripcion varchar(max),
+ costo int,
+ Ganancia int,
+ precio decimal,
+ Inventario decimal
+);
+GO
 
 GO
 CREATE TABLE Mantenimiento
@@ -56,7 +66,3 @@ CREATE TABLE EntradaArticulos
       
 );
 GO
-
-
-
-

@@ -63,9 +63,49 @@ namespace Examen_2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_Add_File_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Add_File_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Add_File_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Add_File_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Delete_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Delete_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_Print_321 {
             get {
                 object obj = ResourceManager.GetObject("icons8_Print_321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Save_as_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Save_as_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
