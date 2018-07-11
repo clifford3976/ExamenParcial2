@@ -47,16 +47,13 @@ namespace Examen_2.BLL
             {
                 Articulos articulo = contexto.articulo.Find(id);
 
-                if (articulo != null)
-                {
-                    contexto.Entry(articulo).State = EntityState.Deleted;
-                }
-
+                contexto.articulo.Remove(articulo);
                 if (contexto.SaveChanges() > 0)
                 {
                     paso = true;
-                    contexto.Dispose();
+                   
                 }
+                contexto.Dispose();
 
 
             }

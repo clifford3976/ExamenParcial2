@@ -1,7 +1,10 @@
+
 CREATE DATABASE ParcialesDb
 GO
 USE ParcialesDb
+
 GO
+
 CREATE TABLE Vehiculos
 (
     VehiculosId int primary key identity(1,1),

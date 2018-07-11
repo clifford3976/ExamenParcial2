@@ -262,6 +262,7 @@
             // 
             this.ImportetextBox.Location = new System.Drawing.Point(449, 180);
             this.ImportetextBox.Name = "ImportetextBox";
+            this.ImportetextBox.ReadOnly = true;
             this.ImportetextBox.Size = new System.Drawing.Size(100, 20);
             this.ImportetextBox.TabIndex = 61;
             // 
@@ -269,6 +270,7 @@
             // 
             this.SubtotaltextBox.Location = new System.Drawing.Point(102, 366);
             this.SubtotaltextBox.Name = "SubtotaltextBox";
+            this.SubtotaltextBox.ReadOnly = true;
             this.SubtotaltextBox.Size = new System.Drawing.Size(100, 20);
             this.SubtotaltextBox.TabIndex = 62;
             // 
@@ -276,6 +278,7 @@
             // 
             this.ITBIStextBox.Location = new System.Drawing.Point(102, 392);
             this.ITBIStextBox.Name = "ITBIStextBox";
+            this.ITBIStextBox.ReadOnly = true;
             this.ITBIStextBox.Size = new System.Drawing.Size(100, 20);
             this.ITBIStextBox.TabIndex = 63;
             // 
@@ -283,6 +286,7 @@
             // 
             this.TotaltextBox.Location = new System.Drawing.Point(102, 418);
             this.TotaltextBox.Name = "TotaltextBox";
+            this.TotaltextBox.ReadOnly = true;
             this.TotaltextBox.Size = new System.Drawing.Size(100, 20);
             this.TotaltextBox.TabIndex = 64;
             // 
