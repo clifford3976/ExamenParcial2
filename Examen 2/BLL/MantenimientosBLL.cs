@@ -62,6 +62,7 @@ namespace Examen_2.BLL
                         contexto.articulo.Find(item.ArticulosId).Inventario += item.Cantidad;
 
                     }
+                    contexto.vehiculo.Find(mantenimiento.VehiculoId).TotalMantenimiento -= mantenimiento.Total;
 
                     mantenimiento.Detalle.Count();
                     contexto.mantenimiento.Remove(mantenimiento);
@@ -140,7 +141,7 @@ namespace Examen_2.BLL
 
                         if (!mantenimiento.Detalle.ToList().Exists(v => v.Id == item.Id))
                         {
-                            contexto.entradaArticulo.Find(item.ArticulosId).Cantidad -= item.Cantidad;
+                            //contexto.entradaArticulo.Find(item.ArticulosId).Cantidad -= item.Cantidad;
 
                             item.Articulo = null;
                             contexto.Entry(item).State = EntityState.Deleted;
@@ -159,6 +160,14 @@ namespace Examen_2.BLL
                         var estado = item.Id > 0 ? EntityState.Modified : EntityState.Added;
                         contexto.Entry(item).State = estado;
                     }
+
+                    Mantenimientos ant = BLL.MantenimientosBLL.Buscar(mantenimiento.MantenimientoId);
+                    decimal resta;
+                    resta = mantenimiento.Total - ant.Total;
+
+                    Vehiculos vehiculo = BLL.VehiculosBLL.Buscar(mantenimiento.VehiculoId);
+                    vehiculo.TotalMantenimiento += resta;
+                    BLL.VehiculosBLL.Modificar(vehiculo);
 
                     contexto.Entry(mantenimiento).State = EntityState.Modified;
                 }
@@ -209,9 +218,9 @@ namespace Examen_2.BLL
             return Convert.ToDecimal(subtotal) * Convert.ToDecimal(0.18);
         }
 
-        public static decimal Total(decimal subtotal, decimal itbis)
+        public static decimal Total(decimal subtotal, decimal ITBIS)
         {
-            return Convert.ToDecimal(subtotal) + Convert.ToDecimal(itbis);
+            return Convert.ToDecimal(subtotal) + Convert.ToDecimal(ITBIS);
         }
 
     }

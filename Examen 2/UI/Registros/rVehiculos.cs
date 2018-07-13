@@ -98,13 +98,18 @@ namespace Examen_2.UI.Registros
             }
             else
             {
-                if (IdnumericUpDown.Value == 0)
+                int id = Convert.ToInt32(IdnumericUpDown.Value);
+                if(id == 0)
                 {
                     paso = BLL.VehiculosBLL.Guardar(vehiculo);
                 }
                 else
                 {
-                    paso = BLL.VehiculosBLL.Modificar(vehiculo);
+                    var P = BLL.VehiculosBLL.Buscar(id);
+                    if(P != null)
+                    {
+                        paso = BLL.VehiculosBLL.Modificar(vehiculo);
+                    }
                 }
                 Limpiar();
                 errorProvider1.Clear();

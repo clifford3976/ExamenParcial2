@@ -42,7 +42,7 @@ namespace Examen_2.UI.Consultas
                     {
                         int id = Convert.ToInt32(CriteriotextBox.Text);
 
-                        filtro = x => x.ArticuloId == id;
+                        filtro = x => x.ArticulosId == id;
 
                         if (BLL.ArticulosBLL.GetList(filtro).Count() == 0)
                         {

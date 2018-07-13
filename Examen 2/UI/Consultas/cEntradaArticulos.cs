@@ -31,7 +31,7 @@ namespace Examen_2.UI.Consultas
                     && (x.Fecha >= DesdedateTimePicker.Value && x.Fecha <= HastadateTimePicker.Value);
                     break;
                 case 1:// Articulo
-                    filtro = x => x.Articulos.Contains(CriteriotextBox.Text)
+                    filtro = x => x.ArticuloId.Equals(CriteriotextBox.Text)
                     && (x.Fecha >= DesdedateTimePicker.Value && x.Fecha <= HastadateTimePicker.Value);
                     break;
                 case 2:// Fecha

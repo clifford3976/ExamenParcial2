@@ -47,14 +47,16 @@ namespace Examen_2.BLL
             {
                 Articulos articulo = contexto.articulo.Find(id);
 
-                contexto.articulo.Remove(articulo);
+                if(articulo != null)
+                {
+                    contexto.Entry(articulo).State = EntityState.Deleted;
+                }
                 if (contexto.SaveChanges() > 0)
                 {
                     paso = true;
-                   
-                }
-                contexto.Dispose();
+                    contexto.Dispose();
 
+                }
 
             }
             catch (Exception)
@@ -147,9 +149,9 @@ namespace Examen_2.BLL
 
         public static decimal CalcularGanancia(decimal Costo, decimal Precio)
         {
-            Precio -= Costo;
+            decimal p = Precio - Costo;
 
-            return (Convert.ToDecimal(Precio) / Convert.ToDecimal(Costo)) * 100;
+            return (Convert.ToDecimal(p) / Convert.ToDecimal(Costo)) * 100;
 
 
 

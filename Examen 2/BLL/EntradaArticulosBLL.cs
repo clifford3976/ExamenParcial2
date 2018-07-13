@@ -15,21 +15,18 @@ namespace Examen_2.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
-            Repositorio<Articulos> articulo = new Repositorio<Articulos>(new Contexto());
-
+           
             try
             {
 
                 if (contexto.entradaArticulo.Add(entradaArticulo) != null)
                 {
-
-
-                    foreach (var item in articulo.GetList(x => x.Descripcion == entradaArticulo.Articulos))
-                    {
-                        contexto.articulo.Find(item.ArticuloId).Inventario += entradaArticulo.Cantidad;
-                    }
+                    Articulos articulos = BLL.ArticulosBLL.Buscar(entradaArticulo.ArticuloId);
+                    articulos.Inventario += entradaArticulo.Cantidad;
+                    BLL.ArticulosBLL.Modificar(articulos);
 
                     contexto.SaveChanges();
+
                     paso = true;
                 }
                 contexto.Dispose();
@@ -57,6 +54,10 @@ namespace Examen_2.BLL
 
                 if (entradaArticulo != null)
                 {
+                    Articulos articulos = BLL.ArticulosBLL.Buscar(entradaArticulo.ArticuloId);
+                    articulos.Inventario -= entradaArticulo.Cantidad;
+                    BLL.ArticulosBLL.Modificar(articulos);
+
                     contexto.Entry(entradaArticulo).State = EntityState.Deleted;
                 }
 
@@ -86,6 +87,14 @@ namespace Examen_2.BLL
 
             try
             {
+                EntradaArticulos ant = BLL.EntradaArticulosBLL.Buscar(entradaArticulo.EntradaId);
+                int resta;
+                resta = entradaArticulo.Cantidad - ant.Cantidad;
+
+                Articulos articulos = BLL.ArticulosBLL.Buscar(entradaArticulo.ArticuloId);
+                articulos.Inventario += resta;
+                BLL.ArticulosBLL.Modificar(articulos);
+
                 contexto.Entry(entradaArticulo).State = EntityState.Modified;
 
                 if (contexto.SaveChanges() > 0)

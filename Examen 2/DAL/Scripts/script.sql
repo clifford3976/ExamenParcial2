@@ -5,14 +5,14 @@ USE ParcialesDb
 
 GO
 
-CREATE TABLE Vehiculos
+create TABLE Vehiculos
 (
     VehiculosId int primary key identity(1,1),
 	Descripcion varchar(max),
 	TotalMantenimiento money
 );
 GO
-CREATE TABLE Talleres
+create TABLE Talleres
 (
 
     TallerId int primary key identity(1,1),
@@ -20,9 +20,9 @@ CREATE TABLE Talleres
 
 );
 GO
-CREATE TABLE Articulos
+create TABLE Articulos
 (
- ArticuloId int primary key identity(1,1),
+ ArticulosId int primary key identity(1,1),
  Descripcion varchar(max),
  costo int,
  Ganancia int,
@@ -32,7 +32,7 @@ CREATE TABLE Articulos
 GO
 
 GO
-CREATE TABLE Mantenimiento
+create TABLE Mantenimiento
 (
 			MantenimientoId int primary key identity(1,1),
 			VehiculoId int,
@@ -44,7 +44,7 @@ CREATE TABLE Mantenimiento
 GO
 
 GO
-CREATE TABLE MantenimientoDetalle
+create TABLE MantenimientoDetalle
 (
 			Id int primary key identity(1,1),
 			MantenimientoId int,
@@ -59,11 +59,11 @@ CREATE TABLE MantenimientoDetalle
 GO
 
 GO
-CREATE TABLE EntradaArticulos
+create TABLE EntradaArticulos
 (
 			EntradaId int primary key identity(1,1),
             Fecha date,
-            Articulos Varchar(30),          
+           ArticuloId int,         
             Cantidad int
            
       

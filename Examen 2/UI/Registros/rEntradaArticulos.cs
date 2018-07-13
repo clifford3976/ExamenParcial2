@@ -23,7 +23,7 @@ namespace Examen_2.UI.Registros
         {
             Repositorio<Articulos> repositorio = new Repositorio<Articulos>(new Contexto());
             ArticulocomboBox.DataSource = repositorio.GetList(c => true);
-            ArticulocomboBox.ValueMember = "ArticuloId";
+            ArticulocomboBox.ValueMember = "ArticulosId";
             ArticulocomboBox.DisplayMember = "Descripcion";
         }
 
@@ -59,7 +59,7 @@ namespace Examen_2.UI.Registros
         {
             EntradaArticulos entradaarticulo = new EntradaArticulos();
             entradaarticulo.EntradaId = Convert.ToInt32(IdnumericUpDown.Value);
-            entradaarticulo.Articulos = ArticulocomboBox.Text;
+            entradaarticulo.ArticuloId = (int)ArticulocomboBox.SelectedValue;
             entradaarticulo.Cantidad = Convert.ToInt32(CantidadnumericUpDown.Value);
 
 
@@ -84,7 +84,11 @@ namespace Examen_2.UI.Registros
                 }
                 else
                 {
-                    paso = BLL.EntradaArticulosBLL.Modificar(entradaarticulo);
+                    var P = BLL.EntradaArticulosBLL.Buscar(Convert.ToInt32(entradaarticulo));
+                    if(P != null)
+                    {
+                        paso = BLL.EntradaArticulosBLL.Modificar(entradaarticulo);
+                    }
                 }
                 Limpiar();
                 errorProvider1.Clear();
@@ -116,7 +120,7 @@ namespace Examen_2.UI.Registros
                 if (entradaarticulo != null)
                 {
                     IdnumericUpDown.Value = entradaarticulo.EntradaId;
-                    ArticulocomboBox.Text = entradaarticulo.Articulos;
+                    ArticulocomboBox.SelectedValue = entradaarticulo.ArticuloId;
                     CantidadnumericUpDown.Value = entradaarticulo.Cantidad;
 
 

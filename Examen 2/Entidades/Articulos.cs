@@ -10,7 +10,7 @@ namespace Examen_2.Entidades
     {
         [Key]
 
-        public int ArticuloId { get; set; }
+        public int ArticulosId { get; set; }
         public string Descripcion { get; set; }
         public decimal costo { get; set; }
         public decimal Ganancia { get; set; }
@@ -19,7 +19,7 @@ namespace Examen_2.Entidades
 
         public Articulos()
         {
-            ArticuloId = 0;
+            ArticulosId = 0;
             Descripcion = string.Empty;
             this.costo = 0;
             Ganancia = 0;

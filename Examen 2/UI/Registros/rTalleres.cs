@@ -129,7 +129,11 @@ namespace Examen_2.UI.Registros
                 }
                 else
                 {
-                    paso = BLL.TalleresBLL.Modificar(taller);
+                    var P = BLL.TalleresBLL.Buscar(Convert.ToInt32(IdnumericUpDown.Value));
+                    if(P != null)
+                    {
+                        paso = BLL.TalleresBLL.Modificar(taller);
+                    }
                 }
                 Limpiar();
                 errorProvider1.Clear();
