@@ -43,7 +43,7 @@ namespace Examen_2.Entidades
 
 
 
-        public MantenimientosDetalle(int mantenimientoId, int articulosId, string articulo, int cantidad, int precio, int importe)
+       /* public MantenimientosDetalle(int mantenimientoId, int articulosId, string articulo, int cantidad, int precio, int importe)
         {
 
             MantenimientoId = mantenimientoId;
@@ -52,6 +52,6 @@ namespace Examen_2.Entidades
             Cantidad = cantidad;
             Precio = precio;
             Importe = importe;
-        }
+        }*/
     }
 }

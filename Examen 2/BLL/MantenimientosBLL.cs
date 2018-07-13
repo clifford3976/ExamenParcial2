@@ -147,9 +147,6 @@ namespace Examen_2.BLL
                             contexto.Entry(item).State = EntityState.Deleted;
                         }
 
-
-
-
                     }
 
 
@@ -160,6 +157,12 @@ namespace Examen_2.BLL
                         var estado = item.Id > 0 ? EntityState.Modified : EntityState.Added;
                         contexto.Entry(item).State = estado;
                     }
+
+
+
+
+
+
 
                     Mantenimientos ant = BLL.MantenimientosBLL.Buscar(mantenimiento.MantenimientoId);
                     decimal resta;

@@ -70,9 +70,6 @@ namespace Examen_2.UI.Registros
             Mantenimiento.ITBIS = Convert.ToDecimal(ITBIStextBox.Text);
             Mantenimiento.Total = Convert.ToDecimal(TotaltextBox.Text);
             
-
-
-
     
             foreach (DataGridViewRow item in DetalledataGridView.Rows)
             {
@@ -302,9 +299,10 @@ namespace Examen_2.UI.Registros
 
                 if (Paso)
                 {
-                    Limpiar();
+                  
                     MessageBox.Show("Guardado!!", "Exitosamente",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Limpiar();
                 }
                 else
                     MessageBox.Show("No se pudo guardar!!", 
@@ -315,23 +313,24 @@ namespace Examen_2.UI.Registros
 
         private void Removerbutton_Click(object sender, EventArgs e)
         {
-            MantenimientosDetalle mantenimientos = new MantenimientosDetalle();
+            //MantenimientosDetalle mantenimientos = new MantenimientosDetalle();
 
             if (DetalledataGridView.Rows.Count > 0 && DetalledataGridView.CurrentRow != null)
             {
 
                 List<MantenimientosDetalle> Detalle = (List<MantenimientosDetalle>)DetalledataGridView.DataSource;
-           
+
 
                 Detalle.RemoveAt(DetalledataGridView.CurrentRow.Index);
 
+
                 decimal SubTotal = 0;
 
-                foreach(var item in Detalle)
+                foreach (var item in Detalle)
                 {
                     SubTotal -= item.Importe;
                 }
-
+              
                 SubTotal *= (-1);
                 SubtotaltextBox.Text = SubTotal.ToString();
 
@@ -344,9 +343,10 @@ namespace Examen_2.UI.Registros
 
                 TotaltextBox.Text = Total.ToString();
 
+                DetalledataGridView.DataSource = null;
+                DetalledataGridView.DataSource = Detalle;
 
             }
-
         }
 
         private bool Validar(int error)

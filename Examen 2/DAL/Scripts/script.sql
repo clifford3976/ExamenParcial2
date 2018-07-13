@@ -69,3 +69,10 @@ create TABLE EntradaArticulos
       
 );
 GO
+
+select *from MantenimientoDetalle
+select *from EntradaArticulos
+select *from Vehiculos
+select *from Articulos
+select *from Mantenimiento
+select *from 
