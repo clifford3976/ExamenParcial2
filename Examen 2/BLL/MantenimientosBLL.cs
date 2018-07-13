@@ -121,73 +121,87 @@ namespace Examen_2.BLL
 
         public static bool Modificar(Mantenimientos mantenimiento)
         {
-            bool paso = false;
-            Contexto contexto = new Contexto();
-            try
-            {
-                var Mantenimiento = BLL.MantenimientosBLL.Buscar(mantenimiento.MantenimientoId);
+           
+                bool paso = false;
+                Contexto contexto = new Contexto();
 
 
-                if (mantenimiento != null)
+
+                try
                 {
+                    var Mantenimiento = BLL.MantenimientosBLL.Buscar(mantenimiento.MantenimientoId);
 
 
-                    foreach (var item in mantenimiento.Detalle)
+                    if (Mantenimiento != null)
                     {
 
-                        contexto.articulo.Find(item.ArticulosId).Inventario += item.Cantidad;
 
-
-
-                        if (!mantenimiento.Detalle.ToList().Exists(v => v.Id == item.Id))
+                        foreach (var item in Mantenimiento.Detalle)
                         {
-                            //contexto.entradaArticulo.Find(item.ArticulosId).Cantidad -= item.Cantidad;
 
-                            item.Articulo = null;
-                            contexto.Entry(item).State = EntityState.Deleted;
+                            contexto.articulo.Find(item.ArticulosId).Inventario += item.Cantidad;
+
+
+
+                            if (!mantenimiento.Detalle.ToList().Exists(v => v.Id == item.Id))
+                            {
+                                //  contexto.registrodeArticulos.Find(item.ArticulosId).Inventario -= item.Cantidad;
+
+                                item.Articulos = null;
+                                contexto.Entry(item).State = EntityState.Deleted;
+                            }
+
+
+
                         }
 
+
+                        foreach (var item in mantenimiento.Detalle)
+                        {
+                            contexto.articulo.Find(item.ArticulosId).Inventario -= item.Cantidad;
+
+
+
+                            var estado = item.Id > 0 ? EntityState.Modified : EntityState.Added;
+                            contexto.Entry(item).State = estado;
+                        }
+
+
+
+
+
+                        Mantenimientos Anterior = BLL.MantenimientosBLL.Buscar(mantenimiento.MantenimientoId);
+
+
+                        //identificar la diferencia ya sea restada o sumada
+                        decimal diferencia;
+
+                        diferencia = mantenimiento.Total - Anterior.Total;
+
+                        //aplicar diferencia al inventario
+                        Vehiculos vehiculos = BLL.VehiculosBLL.Buscar(mantenimiento.VehiculoId);
+                        vehiculos.TotalMantenimiento += diferencia;
+                        BLL.VehiculosBLL.Modificar(vehiculos);
+
+
+
+
+
+                        contexto.Entry(mantenimiento).State = EntityState.Modified;
                     }
 
 
-                    foreach (var item in mantenimiento.Detalle)
+
+                    if (contexto.SaveChanges() > 0)
                     {
-                        contexto.articulo.Find(item.ArticulosId).Inventario -= item.Cantidad;
-
-                        var estado = item.Id > 0 ? EntityState.Modified : EntityState.Added;
-                        contexto.Entry(item).State = estado;
+                        paso = true;
                     }
-
-
-
-
-
-
-
-                    Mantenimientos ant = BLL.MantenimientosBLL.Buscar(mantenimiento.MantenimientoId);
-                    decimal resta;
-                    resta = mantenimiento.Total - ant.Total;
-
-                    Vehiculos vehiculo = BLL.VehiculosBLL.Buscar(mantenimiento.VehiculoId);
-                    vehiculo.TotalMantenimiento += resta;
-                    BLL.VehiculosBLL.Modificar(vehiculo);
-
-                    contexto.Entry(mantenimiento).State = EntityState.Modified;
+                    contexto.Dispose();
                 }
+                catch (Exception) { throw; }
+                return paso;
+            
 
-
-
-                if (contexto.SaveChanges() > 0)
-                {
-                    paso = true;
-                }
-                contexto.Dispose();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return paso;
         }
 
 
